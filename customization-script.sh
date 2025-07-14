@@ -27,6 +27,7 @@ sed '/root         \/usr\/share\/nginx\/html;/r'<(cat <<EOF
 EOF
 ) -i -- /etc/nginx/nginx.conf && \
 
+sudo systemctl enable nginx.service && \
 sudo systemctl restart nginx.service && \
 sudo certbot --nginx -d $host -m my@mail.com --agree-tos -n
 
